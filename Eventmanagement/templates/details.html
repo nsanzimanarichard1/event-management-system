@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>event</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 70px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      nav ul {
+        display: flex;
+        list-style-type: none;
+      }
+      nav ul li {
+        margin-right: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: black;
+      }
+      .text-center {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .single-event-container {
+        border: 0.5px solid lightblue;
+        margin: 20px 30px;
+        border-radius: 7px;
+      }
+      .single-event-content {
+        margin: 20px 30px;
+      }
+      .textbg {
+        font-size: 17px;
+        line-height: 24px;
+        width: 700px;
+      }
+      .event-desc {
+        display: flex;
+        flex-direction: column;
+        margin: 8px 1px;
+      }
+      .event-desc span {
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo"><h1>Eventmanagement</h1></div>
+      <ul>
+        <li><a href="/">Event</a></li>
+        <li><a href="/paymnent">speakers</a></li>
+        <li><a href="/participant">participant</a></li>
+        <li><a href="/payment">payment</a></li>
+        <li><a href="">schedule</a></li>
+      </ul>
+    </nav>
+
+    <div class="single-event-container">
+      <div class="single-event-content">
+        <h3 class="text-center">{{ event.title }}</h3>
+
+        <p class="textbg">{{ event.description }}</p>
+        <div class="event-desc">
+          <p>Venue:<span>{{ event.location }}</span></p>
+          <p>Category:<span>{{ event.category }}</span></p>
+          <p>Start date:<span>{{ event.startdate }}</span></p>
+          <p>free?:<span>{{event.isfree }}</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

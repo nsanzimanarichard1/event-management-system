@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>event</title>
+    {% load static%}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 20px;
+        color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+      nav ul {
+        display: flex;
+        list-style-type: none;
+      }
+      nav ul li {
+        margin-right: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+      .main {
+        padding: 80px 30px;
+      }
+      .event-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-column-gap: 15px;
+        grid-row-gap: 20px;
+        margin-top: 40px;
+      }
+      .h1-event {
+        font-size: 20px;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+      .event-content {
+        border: 1px solid lightblue;
+        border-radius: 7px;
+        padding: 2px 10px;
+      }
+      .event-desc {
+        display: flex;
+        flex-direction: column;
+        margin: 8px 1px;
+      }
+      .event-desc span {
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      footer {
+        background: black;
+        color: white;
+        text-align: center;
+        width: 100%;
+        padding: 30px 20px;
+        
+      }
+      .bold {
+        font-weight: bold;
+      }
+
+      .speaker-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-column-gap: 16px;
+        grid-row-gap: 20px;
+        margin-top: 40px;
+      }
+      .speaker-content {
+       border: 0.2px solid lightgrey;
+        border-radius: 7px;
+        padding: 2px 10px;
+        display:  flex;
+        flex-direction: column;
+        padding: 12px 4px;
+      }
+      .speaker-content h2{
+        text-transform: capitalize;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .btn-register{
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.5);
+   color: white;
+   text-decoration: none;
+   width: 200px;
+   margin-top: 20px;
+   font-size: 18px;
+      }
+      .thumb-nail{
+        background: yellowgreen;
+        height: 40vh;
+        padding: 30px 8px;
+      }
+      .thumb-nail h1{
+        font-size:35px;
+        text-transform: capitalize;
+
+      }
+      .thumb-nail p{
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      .desc{
+        padding: 30px 2px;
+      }
+      .btn-speaker{
+        padding: 12px 15px;
+        background: rgba(0, 0, 0, 0.2);
+      color: white;
+      text-decoration: none;
+      width: 200px;
+       margin-top: 20px;
+       font-size: 18px;
+      }
+      .schedule-content{
+border: 1px solid gray;
+margin: 4px;
+padding: 8px 20px;
+background: azure;
+display: flex;
+justify-content: space-between;
+      }
+      .stitle h2{
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+      
+      .img{
+        width: 150px;
+        height: 100px;
+      }
+      .rectangle{
+        border: 1px solid white;
+        display: inline;
+        white-space: 67px;
+        padding-left: 52px;
+        text-align: center;
+        background-color: rgb(36, 33, 33);
+      }
+      .left{
+        margin-left: 2px;
+        float: left;
+        padding-right: 45px;
+      }
+      .centerlink{
+        text-align: center;
+        border: 1px solid rgb(35, 37, 37);
+        margin: auto;
+        padding-bottom: 15px;
+        width: 200px;
+        
+      }
+      .centerlink:hover{
+        background-color: rgb(34, 32, 32);
+      }
+      .center{
+        text-align: center;
+        margin-top: 27px;
+        padding:auto;
+        margin-right: 0px;
+        background-color: rgb(48, 47, 47);
+       
+      }
+      
+      strong{
+        color: black;
+      }
+      .right{
+        float: right;
+      }
+      .righ{
+        float: right;
+        display: flex;
+        margin-top: -95px;
+        display: block;
+        padding-right: 132px;
+      }
+      
+      input{
+        display: inline;
+        padding-right: 112px;
+        height: 24px;
+        box-shadow: 1px solid rgba(27, 226, 216, 0.2);
+        
+      }
+      button{
+        width: 57px;
+        height: 26px;
+      }
+      button:hover{
+        height: 24px;
+        background-color: rgb(15, 15, 15);
+        color: white;
+      }
+      .pd:hover{
+        background-color: black;
+        color: aliceblue;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo"><h1>Eventmanagement</h1></div>
+      <ul>
+        <li><a href="#event">Event</a></li>
+        <li><a href="#speakers">speakers</a></li>
+        <li><a href="/participant/">participant</a></li>
+        <li><a href="/payment/">payment</a></li>
+        <li><a href="#schedule">schedule</a></li>
+      </ul>
+    </nav>
+
+    <div class="text-center thumb-nail">
+      <h1>conference app</h1>
+      <p>one day full stack challenge</p>
+      <div class="desc">
+     <a  href="/register/" class="btn-register">
+          register now
+        </a>
+        <a  href="#speakers" class="btn-speaker">
+          see speakers
+        </a>
+      </div>
+      
+      <div class="">
+
+      </div>
+    </div>
+    <div class="main">
+      
+      <h2 class="text-center">conference list</h2>
+      <div class="event-container" id="event">
+        {%for event in events%}
+        <div class="event-content">
+          <a href="/event/{{ event.title }}/"
+            ><h1 class="h1-event">title:{{event.title}}</h1></a
+          >
+          <p><span class="bold">descriprtion</span>:{{ event.description }}</p>
+          <div class="event-desc">
+            <p>location:<span>{{ event.location }}</span></p>
+            <p>Category:<span>{{ event.category }}</span></p>
+            <p>Start date:<span>{{ event.startdate }}</span></p>
+            <p>free?:<span>{{event.isfree }}</span></p>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+    <h1 class="text-center">speakers</h1>
+    <div class="speaker-container" id="speakers">
+      
+      {%for speaker in speakers%}
+      <div class="speaker-content">
+        <img src="{{speaker.profile_pic.url}}" class="img" alt="speaker photo">
+     <h2>{{ speaker.name }}</h2></h2>
+      <p>{{ speaker.biograph  }}</p>
+       <p>{{ speaker.phone }}</p>
+      </div>
+      {%endfor%}
+    </div>
+
+    <div class="schedule-container" id="schedule">
+      <h2 class="text-center">Schedule list</h2>
+      {%for schedule in schedules%}
+      <div class="schedule-content">
+        <div class="stitle">
+          <h2>{{ schedule.speaker.name}}</h2>
+        <p>{{ schedule.topic }}</p>
+        </div>
+        <div class="date">
+          <p>{{ schedule.startDate }}</p>
+        </div>
+        </div>
+
+      {%endfor%}
+    </div>
+    <div class="centerlink" class="bd">
+      <div class="center" class=" pd">
+        <a href="register/" class="regist">Don't Miss Out Register Now</a>
+      </div>
+    </div>
+    <div class="r">
+      <div>
+        <b><p>About Paragraph</p></b><br><br>
+
+    <p> ipsum dolor sit amet, consetetur sadipscingt accusam et </p>
+    <p>duo dolores.</p>
+      </div>
+      <div class="righ">
+       <b><p>Stay up to date on Paragraph Conference</p></b><br><br>
+        <input type="text" name="signup"><button>signup</button>
+      </div>
+    </div>
+    
+
+    <footer>
+      <a  class="left" href="#">Community</a>
+      <a  class="left" href="#">Tracks</a>
+      <div class="rectangle" class="rect"><strong>Other Conf</strong>
+        <select name="scripts" id="scripts"> 
+        <optgroup label="scripts">
+          <option value="javascripts">javascripts</option>
+          <option value="c#">c#</option>
+        </optgroup>
+        <optgroup label="language">
+          <option value="c++">C++</option>
+          <option value="c">C</option>
+          <option value="python">python</option>
+        </optgroup>
+        </select>
+      </div>
+      <label for="footer© >2018 Full Stack Conf & Paragraph"></label>
+      <label for="coopyright" class="right">copyright 2023 by Richard Group</label>
+    </footer>
+  </body>
+</html>

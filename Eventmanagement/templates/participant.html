@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>participant</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 70px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      nav ul {
+        display: flex;
+        list-style-type: none;
+      }
+      nav ul li {
+        margin-right: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: black;
+      }
+      table {
+        width: 100%;
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        padding: 0.5rem 0.5rem;
+        background-color: #efefef;
+      }
+
+      table > tbody > tr > td {
+        padding: 0.5rem 0.5rem;
+        border-bottom: 1px solid #efefef;
+        white-space: nowrap;
+      }
+      .table-container {
+        padding: 20px 30px;
+      }
+      .text-center {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo"><h1>Eventmanagement</h1></div>
+      <ul>
+        <li><a href="/">Event</a></li>
+        <li><a href="/speakers">speakers</a></li>
+        <li><a href="/participant/">participant</a></li>
+        <li><a href="/payment/">payment</a></li>
+        <li><a href="">schedule</a></li>
+      </ul>
+    </nav>
+    <h3 class="text-center">Participant list</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for participant in participants%}
+          <tr>
+            <td>{{ participant.id }}</td>
+            <td>{{ participant.name }}</td>
+            <td>
+              <a href="/participant/{{participant.email }}"
+                >{{ participant.email }}</a
+              >
+            </td>
+            <td>{{participant.phoneNumber}}</td>
+          </tr>
+
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

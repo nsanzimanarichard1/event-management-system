@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register</title>
+    <style>
+      .form-container {
+        padding: 40px 40%;
+      }
+      form {
+        border: 0.5px solid gray;
+        width: 400px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+      form > input {
+        padding: 8px;
+        width: 100%;
+        color: whitesmoke;
+        background-color: black;
+      }
+      .text-center {
+        text-align: center;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center">Register for confrence</h1>
+    <div class="form-container">
+      <form method="post" action="">
+        {%csrf_token%} {{form.as_p}}
+        <input type="submit" name="submit" />
+      </form>
+    </div>
+  </body>
+</html>
